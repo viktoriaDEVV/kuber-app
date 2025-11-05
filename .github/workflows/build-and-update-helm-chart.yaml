@@ -57,6 +57,7 @@ jobs:
         with:
           repository: viktoriadevv/helm-charts
           token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          path: helm-charts
 
       - name: Update image tag in values.yaml
         working-directory: helm-charts/my-chart
