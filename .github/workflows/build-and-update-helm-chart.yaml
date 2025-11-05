@@ -23,6 +23,9 @@ jobs:
         id: vars
         run: echo "tag=${GITHUB_REF_NAME}" >> $GITHUB_OUTPUT
 
+      - name: Export TAG to env
+        run: echo "TAG=${GITHUB_REF_NAME}" >> $GITHUB_ENV
+
       - name: Set lowercase owner
         run: echo "OWNER_LC=$(echo ${{ github.repository_owner }} | tr '[:upper:]' '[:lower:]')" >> $GITHUB_ENV
 
@@ -40,7 +43,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           push: true
-          tags: ghcr.io/${{ env.OWNER_LC }}/kuber-app:${{ env.TAG }}
+          tags: ghcr.io/${{ env.OWNER_LC }}/kuber-app:${{ steps.vars.outputs.tag }}
           context: .
 
   update-helm:
