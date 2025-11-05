@@ -48,7 +48,7 @@ jobs:
       - name: Checkout Helm chart repository
         uses: actions/checkout@v4
         with:
-          repository: your-org/your-helm-chart-repo
+          repository: ghcr.io/viktoriadevv/helm-charts/my-chart
           token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
           path: chart-repo
 
